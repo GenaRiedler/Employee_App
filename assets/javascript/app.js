@@ -80,7 +80,10 @@ database.ref().on('child_added', function(child_snapshot){
   table_row.append(start_date_col);
 
   //Creates the months worked column.
-  var months_worked = Date.now() - start_date;
+  var today = new Date();
+  var today_wrapper = moment(today);
+  var start_wrapper = moment(start_date);
+  var months_worked = today_wrapper.diff(start_wrapper, 'months');
   var months_worked_col = $('<td>').text(months_worked);
   months_worked_col.attr('id', 'months worked');
   table_row.append(months_worked_col);
