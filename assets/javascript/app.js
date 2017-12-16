@@ -20,8 +20,6 @@ var current_role = "";
 var start_date = "";
 var current_rate = "";
 
-//Gives each employee row and unique id.
-var employee_count = -1;
 
 //Event listener that runs function upon clicking submit.
 $('#add-emp').on('click', function(){
@@ -35,7 +33,6 @@ $('#add-emp').on('click', function(){
   current_role = $('#role-input').val();
   start_date = $('#date-input').val();
   current_rate = $('#rate-input').val();
-  employee_count++;
 
   //Pushes the individual entry to the database. Push adds it as one 
   //item with a single unique id.
@@ -45,7 +42,6 @@ $('#add-emp').on('click', function(){
     role: current_role,
     start_date: start_date,
     rate: current_rate,
-    employee_count: employee_count
 
   });
 });
@@ -62,7 +58,6 @@ database.ref().on('child_added', function(child_snapshot){
 
   //Creates the table row
   var table_row = $('<tr>');
-  table_row.attr('id', employee_count);
 
   //Creates the name column.
   var name_col = $('<td>').text(current_name);
